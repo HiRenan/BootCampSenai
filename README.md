@@ -24,8 +24,6 @@ O projeto está organizado da seguinte forma:
 - `insights_apresentacao.md`: Esboço e insights para a apresentação do projeto.
 - `requirements.txt`: Lista de dependências Python para o projeto.
 - `todo.md`: Lista de tarefas e progresso do projeto.
-- `projeto_bootcamp.txt`: Conteúdo extraído do PDF do projeto.
-- `api_instructions.txt`: Conteúdo extraído do PDF de instruções da API.
 
 ## Como Executar
 
@@ -37,7 +35,7 @@ O projeto está organizado da seguinte forma:
 ### 1. Configurar o Ambiente
 
 Clone o repositório (ou copie os ficheiros para uma pasta local) e navegue até à pasta do projeto.
-Crie um ambiente virtual (recomendado):
+Crie um ambiente virtual:
 
 ```bash
 python -m venv .venv
@@ -72,32 +70,3 @@ streamlit run dashboard_app_v4.py
 ```
 
 O dashboard deverá abrir automaticamente no seu navegador web.
-
-## Deploy Permanente do Dashboard (Streamlit)
-
-Uma forma simples de fazer o deploy permanente e gratuito de aplicações Streamlit é usando o **Streamlit Community Cloud**.
-
-**Passos para o Deploy no Streamlit Community Cloud:**
-
-1.  **Tenha o seu projeto no GitHub:**
-
-    - Certifique-se de que todos os ficheiros necessários estão no seu repositório GitHub, incluindo:
-      - `dashboard_app_v4.py` (o seu script principal do Streamlit)
-      - `requirements.txt` (com todas as dependências)
-      - Quaisquer ficheiros de dados que o seu dashboard carregue diretamente (ex: `bootcamp_train.csv`, `feature_importances_random_forest.png`, se não forem gerados dinamicamente ou se preferir tê-los no repo para o deploy).
-      - **Nota:** Para o `bootcamp_train.csv` e outros ficheiros de dados grandes, considere se eles realmente precisam estar no repositório para o deploy do dashboard ou se o dashboard pode funcionar com versões processadas/menores ou se os dados são carregados de outra fonte no ambiente de deploy.
-
-2.  **Crie uma conta no Streamlit Community Cloud:**
-
-    - Aceda a [share.streamlit.io](https://share.streamlit.io/) e crie uma conta (pode usar a sua conta GitHub para login).
-
-3.  **Faça o Deploy da Aplicação:**
-
-    - No Streamlit Community Cloud, clique em "New app".
-    - Selecione o seu repositório GitHub, o branch (geralmente `main` ou `master`) e o caminho para o ficheiro principal da aplicação Streamlit (ex: `dashboard_app_v4.py`).
-    - Pode configurar opções avançadas se necessário (como versões específicas do Python).
-    - Clique em "Deploy!".
-
-4.  **Acompanhe o Deploy:**
-    - O Streamlit Community Cloud irá construir o ambiente e fazer o deploy da sua aplicação. Poderá acompanhar os logs.
-    - Assim que estiver pronto, terá um URL público permanente para o seu dashboard.
