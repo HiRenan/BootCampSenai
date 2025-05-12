@@ -19,7 +19,7 @@ map_sim_nao = {
 print("Valores únicos nas colunas de falha ANTES da padronização:")
 for col in falha_cols:
     print(f"{col}: {train_df[col].unique()}")
-    # Tentar aplicar o mapeamento. Se a coluna já for booleana, pode dar erro, então tratamos.
+    # Tentar aplicar o mapeamento. 
     if train_df[col].dtype == 'object' or pd.api.types.is_string_dtype(train_df[col]):
         train_df[col] = train_df[col].map(map_sim_nao).astype(bool)
     elif pd.api.types.is_bool_dtype(train_df[col]):
@@ -27,7 +27,6 @@ for col in falha_cols:
     else:
         # Para casos como a falha_5 que pode ter outros valores, vamos inspecionar e decidir
         # Por agora, se não for string/object ou bool, converter para bool considerando não nulo como True
-        # Isto pode precisar de ajuste
         print(f"Atenção: Coluna {col} tem tipo {train_df[col].dtype} e será convertida para bool. Valores não nulos/não zero serão True.")
         train_df[col] = train_df[col].notna() & (train_df[col] != 0) # Exemplo, pode precisar de ajuste
 
@@ -96,7 +95,7 @@ print("\nInformações do dataset DEPOIS da padronização das colunas de tipo d
 train_df.info()
 
 
-# Aqui o código foi crucial para: 
+# Aqui o código foi crucial em: 
 # Limpar e Padronizar as Variáveis Alvo: Garantir que as colunas de falha estão num formato numérico consistente (0/1).
 # Entender a Natureza das Falhas: Ver quais são mais frequentes e confirmar que múltiplas falhas podem ocorrer numa mesma amostra, o que justifica a modelagem multirrótulo.
 # Preparar o Terreno: Deixar os dados um pouco mais limpos e compreendidos antes de tratamentos de dados faltantes mais complexos e da modelagem em si.

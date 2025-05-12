@@ -68,8 +68,7 @@ def preprocess_data(df, scaler=None, train_medians=None, is_train=True):
                     df[col].fillna(df[col].median(), inplace=True) # Mediana do próprio teste como fallback
                     print(f"Alerta: Valores em falta na coluna de teste '{col}' preenchidos com a mediana do TESTE.")
 
-    # Remover a coluna 'peso_da_placa' se existir e for constante (verificado no treino)
-    # No script de pré-processamento, vimos que 'peso_da_placa' é constante no treino.
+    # No script de pré-processamento, foi visto que 'peso_da_placa' é constante no treino, então a removemos.
     if 'peso_da_placa' in df.columns:
         df = df.drop(columns=['peso_da_placa'])
         print("Coluna 'peso_da_placa' removida.")

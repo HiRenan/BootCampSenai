@@ -13,7 +13,6 @@ map_sim_nao = {
 }
 for col in falha_cols:
     if train_df[col].dtype == 'object' or pd.api.types.is_string_dtype(train_df[col]):
-        # Handle potential new/unseen string values by mapping them to False if not in map_sim_nao
         train_df[col] = train_df[col].apply(lambda x: map_sim_nao.get(x, False) if isinstance(x, str) else x)
         train_df[col] = train_df[col].astype(bool)
     elif pd.api.types.is_bool_dtype(train_df[col]):
@@ -48,7 +47,6 @@ if 'peso_da_placa' in train_df.columns:
     print(f"Contagem de NaNs: {train_df['peso_da_placa'].isnull().sum()}")
     if train_df['peso_da_placa'].nunique() <= 1:
         print("A coluna 'peso_da_placa' tem um único valor ou é constante. Pode ser candidata a remoção.")
-        # Decisão de remover ou não pode ser tomada mais tarde, por agora apenas alertamos.
     # Se peso_da_placa for float e tiver NaNs, já foi tratado acima.
     # Se for object e tiver NaNs, precisaria de tratamento específico, mas parece ser numérica.
 
@@ -67,15 +65,15 @@ train_df[features_to_scale] = scaler.fit_transform(train_df[features_to_scale])
 print("Variáveis numéricas padronizadas usando StandardScaler.")
 
 # --- Tratamento de Outliers (Exemplo: Capping/Winsorization) ---
-# Por agora, vamos apenas mencionar que outliers foram identificados.
+# Vou apenas mencionar que outliers foram identificados.
 # A estratégia de tratamento (capping, remoção, transformação) pode ser complexa
 # e idealmente discutida ou baseada em mais análise ou requisitos do modelo.
-# Para este script, não aplicaremos remoção/capping de outliers automaticamente ainda.
-print("\nAnálise de Outliers: Outliers foram identificados na EDA. A estratégia de tratamento (capping, transformação ou remoção) será considerada na modelagem ou após discussão.")
+# Para este script, não aplico remoção/capping de outliers automaticamente ainda.
+print("\nAnálise de Outliers: Outliers foram identificados na EDA. A estratégia de tratamento (capping, transformação ou remoção) será considerada na modelagem ou revisão.")
 
 # Salvar o dataframe pré-processado
 train_df.to_csv("data/bootcamp_train_processed.csv", index=False)
-print("\nDataset pré-processado guardado em bootcamp_train_processed.csv")
+print("\nDataset pré-processado guardado em data/bootcamp_train_processed.csv")
 
 print("\nPré-processamento concluído.")
 
