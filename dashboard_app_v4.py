@@ -377,7 +377,7 @@ elif pagina_selecionada == "Simulador Interativo de Defeitos":
                 falha_cols_display = [f'Falha {i}' for i in range(1, 7)] + ['Outras Falhas']
                 results_pred_list = []
                 for i, col_name in enumerate(falha_cols_display):
-                    outcome = "DETECTADA  ✅" if prediction[0, i] == 1 else "Não Detetada  ❌"
+                    outcome = "DETECTADA  ✅" if prediction[0, i] == 1 else "Não Detectada  ❌"
                     probability = f"{prediction_proba[i][0, 1]*100:.1f}%"
                     results_pred_list.append({"Tipo de Falha": col_name, "Previsão": outcome, "Probabilidade de Ocorrência": probability})
                 
